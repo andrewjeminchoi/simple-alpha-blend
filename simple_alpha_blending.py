@@ -6,6 +6,7 @@ import cv2
 # Parse the image files
 if len(sys.argv) != 4:
     print("Should be in format: simple_alpha_blender.py img_name1.png img_name2.png background_name.png")
+    sys.exit("Aborting...")
 imgF = sys.argv[1]
 imgB = sys.argv[2]
 bg = sys.argv[3]
@@ -18,7 +19,7 @@ alpha = cv2.imread(bg)
 foreground = foreground.astype(float)
 background = background.astype(float)
 
-# Normalize intensity of alpha mask
+# Normalize intensity of alpha mask by 255
 alpha = alpha.astype(float)/255
 
 foreground = cv2.multiply(alpha, foreground)
